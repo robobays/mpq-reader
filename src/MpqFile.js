@@ -45,7 +45,9 @@ export default class MpqFile {
   }
   
   static async load(address) {
-    if (address.startsWith("http://") || address.startsWith("https://")) {
+    if (!address) {
+      return new MpqFile(await buffer(process.stdin));
+    } else if (address.startsWith("http://") || address.startsWith("https://")) {
       const response = await fetch(address);
 
       return new MpqFile(await buffer(response.body));
