@@ -1,0 +1,22 @@
+{
+  "name": "@robobays/mpq-reader",
+  "description": "Reads MPQ archive files",
+  "version": "1.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robobays/mpq-reader.git"
+  },
+  "homepage": "https://github.com/robobays/mpq-reader#readme",
+  "bugs": {
+    "url": "https://github.com/robobays/mpq-reader/issues"
+  },
+  "keywords": [
+    "MPQ"
+  ],
+  "author": "Stephan Zlatarev",
+  "license": "The Unlicense",
+  "dependencies": {
+    "seek-bzip": "^2.0.0"
+  }
+}
