@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Select release version
+        id: version
+        run: printf 'tag=%(%Y.%m.%d-%H.%M)T' >> $GITHUB_OUTPUT
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Publish to NPM
+        run: |
+          echo 'Setting version ${{ steps.version.outputs.tag }} in package descriptor'
+          sed -i -e 's|0.0.0|${{ steps.version.outputs.tag }}|g' package.json
+          npm install
+          npm publish --access public --//registry.npmjs.org:_authToken=${{ secrets.NPM_TOKEN }}

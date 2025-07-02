@@ -1,7 +1,7 @@
 {
   "name": "@robobays/mpq-reader",
   "description": "Reads MPQ archive files",
-  "version": "1.0.3",
+  "version": "0.0.0",
   "type": "module",
   "main": "src/index.js",
   "repository": {
