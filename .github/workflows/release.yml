@@ -22,5 +22,7 @@ jobs:
         run: |
           echo 'Setting version ${{ steps.version.outputs.version }} in package descriptor'
           sed -i -e 's|0.0.0|${{ steps.version.outputs.version }}|g' package.json
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           npm install
-          npm publish --access public --//registry.npmjs.org:_authToken=${{ secrets.NPM_TOKEN }}
+          npm publish --access public
+          rm -f ~/.npmrc
