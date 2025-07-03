@@ -1,14 +1,14 @@
-name: Release
+name: Publish
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - "main"
+      - main
 
 jobs:
 
-  Release:
+  npm:
     runs-on: ubuntu-latest
     steps:
       - name: Select release version
@@ -18,7 +18,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Publish to NPM
+      - name: Publish
         run: |
           echo 'Setting version ${{ steps.version.outputs.version }} in package descriptor'
           sed -i -e 's|0.0.0|${{ steps.version.outputs.version }}|g' package.json
